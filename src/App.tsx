@@ -7,19 +7,17 @@ import { Signup } from "./pages/Signup";
 
 function App() {
   return (
-    <div className="dark">
+    <div className="dark h-full">
       <BrowserRouter>
-        <div>
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/signup" element={<Login />}></Route>
-              <Route path="/login" element={<Signup />}></Route>
-              <Route path="*" element={<PageNotFound />}></Route>
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/signup" element={<Login />}></Route>
+            <Route path="/login" element={<Signup />}></Route>
+            <Route path="*" element={<PageNotFound />}></Route>
+          </Routes>
+        </main>
+        <Footer />
       </BrowserRouter>
     </div>
   );
