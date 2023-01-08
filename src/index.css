@@ -4,8 +4,10 @@
 
 body {
   @apply font-roboto;
-  min-height: 100vh;
+
+  /* min-height: 100vh; */
 }
 
-.root {
+#root {
+  /* height: 100%; */
 }
