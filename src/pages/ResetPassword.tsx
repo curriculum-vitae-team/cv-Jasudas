@@ -1,37 +1,35 @@
 import { gql, useQuery } from "@apollo/client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const LOGIN_MUTATION = gql`
-  mutation LoginMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        id
-        name
-      }
+const GET_LOCATIONS = gql`
+  query GetLanguages {
+    languages {
+      id
+      name
     }
   }
 `;
 
-export const Login = () => {
+export const ResetPassword = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const { loading, error, data } = useQuery(GET_LOCATIONS);
+  console.log(loading, error, data);
 
   const changePasswordVisibility = () => {
     setVisiblePassword(true);
-    setTimeout(() => {
+    const passwordVisibilityTimeOut = setTimeout(() => {
       setVisiblePassword(false);
     }, 3000);
   };
+  useEffect(() => {
+    return () => {
+      // clearTimeout(passwordVisibilityTimeOut);
+    };
+  }, []);
 
-  const SignIn = () => {
-    const { loading, error, data } = useQuery(LOGIN_MUTATION);
-    console.log(loading, error, data);
-  };
   return (
-    <main className="flex-1 flex flex-col bg-black text-white px-4">
+    <div className="bg-black text-white mb-auto">
       <section className="flex justify-center flex-col items-center text-center mb-6">
         <h1 className="pt-10 pb-6 text-2xl font-bold uppercase">
           Welcome back
@@ -40,14 +38,13 @@ export const Login = () => {
           Hello again! Sign in to continue exploring and collecting
         </p>
       </section>
-      <form className="flex-1 flex flex-col  h-full" onSubmit={SignIn}>
+      <form className="flex flex-col px-4">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col">
             <label htmlFor="login" className="text-xs text-middle-gray pl-3">
               Email or Username
             </label>
             <input
-              onChange={(e) => setLogin(e.target.value)}
               type="text"
               id="login"
               className=" bg-transparent border-b border-middle-gray outline-none pt-1 pb-2 pl-3 pr-10"
@@ -59,7 +56,6 @@ export const Login = () => {
               Password
             </label>
             <input
-              onChange={(e) => setPassword(e.target.value)}
               type={visiblePassword ? "text" : "password"}
               id="password"
               className=" bg-transparent border-b border-middle-gray outline-none pt-1 pb-2 pl-3 pr-10"
@@ -95,20 +91,17 @@ export const Login = () => {
           </div>
         </div>
         <div className="flex flex-col gap-2 mt-auto">
-          <button
-            className="uppercase bg-white text-black py-3 px-4"
-            type="submit"
-          >
+          <button className="uppercase bg-white text-black py-3 px-4">
             Sign In
           </button>
           <Link
             to={"/reset-password"}
-            className="text-center uppercase py-3 px-4 text-middle-gray"
+            className="uppercase py-3 px-4 text-middle-gray"
           >
             Reset Password
           </Link>
         </div>
       </form>
-    </main>
+    </div>
   );
 };

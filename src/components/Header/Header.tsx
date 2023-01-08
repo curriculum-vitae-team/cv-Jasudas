@@ -18,17 +18,17 @@ export const Header = () => {
             <path
               d="M19 1L1 19"
               className="stroke-middle-gray"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               fill="middle-gray"
               className="stroke-middle-gray"
               d="M1 1L19 19"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </button>
