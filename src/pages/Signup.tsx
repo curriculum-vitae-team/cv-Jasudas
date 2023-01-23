@@ -1,31 +1,6 @@
 import { gql, useQuery, useMutation } from "@apollo/client";
-import React, { useEffect, useState } from "react";
+import React, { FormEventHandler, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
-const GET_LOCATIONS = gql`
-  query GetLanguages {
-    languages {
-      id
-      name
-    }
-  }
-`;
-
-const REGISTER = gql`
-  mutation RegisterMutation(
-    $name: String!
-    $email: String!
-    $password: String!
-  ) {
-    register(name: $name, email: $email, password: $password) {
-      token
-      user {
-        id
-        name
-      }
-    }
-  }
-`;
 
 const REGISTER_MUTATION = gql`
   mutation RegisterMutation($email: String!, $password: String!) {
@@ -54,7 +29,7 @@ export const Signup = () => {
   };
 
   const [signup, { data, loading, error }] = useMutation(REGISTER_MUTATION);
-  const SignIn = (e: Event) => {
+  const SignIn = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     signup({

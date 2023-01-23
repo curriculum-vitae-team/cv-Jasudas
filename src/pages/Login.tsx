@@ -1,23 +1,31 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const LOGIN_MUTATION = gql`
-  mutation LoginMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
+const LOGIN_QUERY = gql`
+  query LoginMutation($email: String!, $password: String!) {
+    login(auth: { email: $email, password: $password }) {
       user {
         id
-        name
+        email
+        role
       }
+      access_token
     }
   }
 `;
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [visiblePassword, setVisiblePassword] = useState(false);
-  const [login, setLogin] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { loading, error, data } = useQuery(LOGIN_QUERY, {
+    variables: {
+      email: email,
+      password: password,
+    },
+  });
 
   const changePasswordVisibility = () => {
     setVisiblePassword(true);
@@ -26,13 +34,21 @@ export const Login = () => {
     }, 3000);
   };
 
-  const SignIn = () => {
-    const { loading, error, data } = useQuery(LOGIN_MUTATION);
+  const SignIn = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
     console.log(loading, error, data);
+    if (!error && data) {
+      // document.cookie = `userToken=${
+      //   data.login.access_token
+      // }; expires=${new Date(new Date().getTime() + 60000).toUTCString()}`;
+      localStorage.setItem("access_token", data.login.access_token);
+      navigate("/dashboard");
+    }
   };
+
   return (
-    <main className="flex-1 flex flex-col bg-black text-white px-4">
-      <section className="flex justify-center flex-col items-center text-center mb-6">
+    <main className="flex-1 flex flex-col bg-black text-white px-4 lg:items-center">
+      <section className="flex justify-center flex-col items-center text-center mb-6 lg:max-w-xl ">
         <h1 className="pt-10 pb-6 text-2xl font-bold uppercase">
           Welcome back
         </h1>
@@ -40,14 +56,17 @@ export const Login = () => {
           Hello again! Sign in to continue exploring and collecting
         </p>
       </section>
-      <form className="flex-1 flex flex-col  h-full" onSubmit={SignIn}>
+      <form
+        className="flex-1 flex flex-col  h-full  lg:max-w-xl "
+        onSubmit={SignIn}
+      >
         <div className="flex flex-col gap-10">
           <div className="flex flex-col">
             <label htmlFor="login" className="text-xs text-middle-gray pl-3">
               Email or Username
             </label>
             <input
-              onChange={(e) => setLogin(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               type="text"
               id="login"
               className=" bg-transparent border-b border-middle-gray outline-none pt-1 pb-2 pl-3 pr-10"
