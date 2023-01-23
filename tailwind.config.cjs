@@ -11,6 +11,7 @@ module.exports = {
       "middle-gray": "#828282",
       "middle-gray-light": "#4F4F4F",
       transparent: "#FFFFFF00",
+      "dark-blue": "#001529",
     },
     extend: {},
   },
