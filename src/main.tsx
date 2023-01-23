@@ -18,7 +18,7 @@ const httpLink = new HttpLink({
     ...(import.meta.env.VITE_MODE === "development"
       ? { "Access-Control-Allow-Origin": "*" }
       : {}),
-    Authorization: `Bearer ${import.meta.env.VITE_JWT}`,
+    // Authorization: `Bearer ${import.meta.env.VITE_JWT}`,
   },
 });
 
