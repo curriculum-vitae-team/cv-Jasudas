@@ -45,8 +45,8 @@ export const Signup = () => {
   // if (error) return <p>Error :(</p>;
 
   return (
-    <main className="flex-1 flex flex-col bg-black text-white px-4">
-      <section className="flex justify-center flex-col items-center text-center mb-6">
+    <main className="flex-1 flex flex-col bg-black text-white px-4 xl:items-center">
+      <section className="flex justify-center flex-col items-center text-center mb-6 xl:max-w-xl">
         <h1 className="pt-10 pb-6 text-2xl font-bold uppercase">
           Register now
         </h1>
@@ -55,7 +55,7 @@ export const Signup = () => {
           Lamborghini's first NFT auction in their history!
         </p>
       </section>
-      <form className="flex-1 flex flex-col  h-full" onSubmit={SignIn}>
+      <form className="flex-1 flex flex-col  h-full xl:max-w-xl" onSubmit={SignIn}>
         <div className="flex flex-col gap-10">
           <div className="flex flex-col">
             <label htmlFor="username" className="text-xs text-middle-gray pl-3">
