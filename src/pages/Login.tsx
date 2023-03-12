@@ -1,6 +1,7 @@
 import { gql, useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Breadcrumbs } from "../components/BreadCrumbs/BreadCrumbs";
 
 const LOGIN_QUERY = gql`
   query LoginMutation($email: String!, $password: String!) {
@@ -48,6 +49,7 @@ export const Login = () => {
 
   return (
     <main className="flex-1 flex flex-col bg-black text-white px-4 lg:items-center">
+      <Breadcrumbs items={[{label:"login", to:"home"}]}/>
       <section className="flex justify-center flex-col items-center text-center mb-6 lg:max-w-xl ">
         <h1 className="pt-10 pb-6 text-2xl font-bold uppercase">
           Welcome back
