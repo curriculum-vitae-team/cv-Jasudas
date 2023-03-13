@@ -7,8 +7,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "yarn run eslint ./src --ext .tsx",
-    "lint-fix": "yarn run eslint ./src --ext .tsx --fix"
+    "lint": "eslint ./src --ext .tsx",
+    "lint:debug": "eslint ./src --debug",
+    "lint:fix": "eslint ./src --ext .tsx --fix",
+    "test": "",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@apollo/client": "^3.7.2",
@@ -26,6 +29,7 @@
     "autoprefixer": "^10.4.13",
     "eslint": "^8.0.1",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-config-standard-with-typescript": "latest",
     "eslint-plugin-import": "^2.25.2",
@@ -34,7 +38,8 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "latest",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.3",
+    "eslint-plugin-tailwindcss": "^3.10.1",
+    "husky": "^8.0.0",
     "postcss": "^8.4.20",
     "prettier": "^2.8.4",
     "tailwindcss": "^3.2.4",

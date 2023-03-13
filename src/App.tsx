@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
@@ -7,11 +8,11 @@ import { Dashboard } from "./pages/Dashboard";
 import { Login } from "./pages/Login";
 import { PageNotFound } from "./pages/PageNotFound";
 import { ResetPassword } from "./pages/ResetPassword";
-import { Signup } from "./pages/Signup";
+import { SignUp } from "./pages/SignUp";
 
-function App() {
+function App(): ReturnType<React.FC> {
   return (
-    <div className="dark min-h-screen flex flex-col ">
+    <div className="dark flex min-h-screen flex-col ">
       <BrowserRouter>
         <Header />
 
@@ -20,10 +21,10 @@ function App() {
             path="/signup"
             element={
               <PublicRoute>
-                <Signup />
+                <SignUp />
               </PublicRoute>
             }
-          ></Route>
+          />
           <Route
             path="/login"
             element={
@@ -31,7 +32,7 @@ function App() {
                 <Login />
               </PublicRoute>
             }
-          ></Route>
+          />
           <Route
             path="/dashboard"
             element={
@@ -39,9 +40,9 @@ function App() {
                 <Dashboard />
               </PrivateRoute>
             }
-          ></Route>
-          <Route path="/reset-password" element={<ResetPassword />}></Route>
-          <Route path="*" element={<PageNotFound />}></Route>
+          />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
 
         <Footer />

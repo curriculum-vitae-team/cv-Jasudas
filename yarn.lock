@@ -1198,6 +1198,7 @@ __metadata:
     autoprefixer: ^10.4.13
     eslint: ^8.0.1
     eslint-config-airbnb: ^19.0.4
+    eslint-config-airbnb-typescript: ^17.0.0
     eslint-config-prettier: ^8.7.0
     eslint-config-standard-with-typescript: latest
     eslint-plugin-import: ^2.25.2
@@ -1206,8 +1207,9 @@ __metadata:
     eslint-plugin-promise: ^6.0.0
     eslint-plugin-react: latest
     eslint-plugin-react-hooks: ^4.6.0
+    eslint-plugin-tailwindcss: ^3.10.1
     graphql: ^16.6.0
-    husky: ^8.0.3
+    husky: ^8.0.0
     postcss: ^8.4.20
     prettier: ^2.8.4
     react: ^18.2.0
@@ -1603,6 +1605,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-airbnb-typescript@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "eslint-config-airbnb-typescript@npm:17.0.0"
+  dependencies:
+    eslint-config-airbnb-base: ^15.0.0
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^5.13.0
+    "@typescript-eslint/parser": ^5.0.0
+    eslint: ^7.32.0 || ^8.2.0
+    eslint-plugin-import: ^2.25.3
+  checksum: e598ae7bcc3629bbc847a749f8c1ad69e6ef111335b60d88bde91d1bb335077b06688868257fe2fcc95c3687a0d6e3e1f91e0534cc633f5a118239e52bb05a54
+  languageName: node
+  linkType: hard
+
 "eslint-config-airbnb@npm:^19.0.4":
   version: 19.0.4
   resolution: "eslint-config-airbnb@npm:19.0.4"
@@ -1807,6 +1823,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-tailwindcss@npm:^3.10.1":
+  version: 3.10.1
+  resolution: "eslint-plugin-tailwindcss@npm:3.10.1"
+  dependencies:
+    fast-glob: ^3.2.5
+    postcss: ^8.4.4
+  peerDependencies:
+    tailwindcss: ^3.2.2
+  checksum: d05b4ab9bf5fdecd11974fbdbbe3c58bd7a07fb0682fb715ffa5cfdd3b6a49bd5bd393386925400b577c68ba5b3c406c55fa46b1215c61bcb4a5634b0710d8f9
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -1975,7 +2003,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.12, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.9":
   version: 3.2.12
   resolution: "fast-glob@npm:3.2.12"
   dependencies:
@@ -2396,7 +2424,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:^8.0.3":
+"husky@npm:^8.0.0":
   version: 8.0.3
   resolution: "husky@npm:8.0.3"
   bin:
@@ -3427,7 +3455,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.18, postcss@npm:^8.4.20":
+"postcss@npm:^8.4.18, postcss@npm:^8.4.20, postcss@npm:^8.4.4":
   version: 8.4.21
   resolution: "postcss@npm:8.4.21"
   dependencies:

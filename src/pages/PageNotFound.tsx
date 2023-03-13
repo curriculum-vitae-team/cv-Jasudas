@@ -1,5 +1,5 @@
 import React from "react";
 
-export const PageNotFound = () => {
+export function PageNotFound(): ReturnType<React.FC> {
   return <div>PageNotFound</div>;
-};
+}

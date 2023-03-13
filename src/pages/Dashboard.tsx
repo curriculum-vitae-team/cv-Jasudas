@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Dashboard = () => {
+export function Dashboard(): ReturnType<React.FC> {
   return <div>Dashboard</div>;
-};
+}

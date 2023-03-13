@@ -10,7 +10,7 @@ interface BreadcrumbsProps {
   items: BreadcrumbItem[];
 }
 
-export const  Breadcrumbs = ({ items }: BreadcrumbsProps)=> {
+export function Breadcrumbs({ items }: BreadcrumbsProps): ReturnType<React.FC> {
   const { pathname } = useLocation();
 
   // Create a new array of breadcrumb items based on the current path
@@ -30,17 +30,8 @@ export const  Breadcrumbs = ({ items }: BreadcrumbsProps)=> {
     <nav aria-label="breadcrumb">
       <ol>
         {allItems.map((item, index) => (
-          <li
-            key={item.to}
-            className={`breadcrumb-item ${
-              index === allItems.length - 1 ? "active" : ""
-            }`}
-          >
-            {index === allItems.length - 1 ? (
-              item.label
-            ) : (
-              <Link to={item.to}>{item.label}</Link>
-            )}
+          <li key={item.to} className={`breadcrumb-item ${index === allItems.length - 1 ? "active" : ""}`}>
+            {index === allItems.length - 1 ? item.label : <Link to={item.to}>{item.label}</Link>}
           </li>
         ))}
       </ol>
@@ -48,4 +39,3 @@ export const  Breadcrumbs = ({ items }: BreadcrumbsProps)=> {
     </nav>
   );
 }
-
